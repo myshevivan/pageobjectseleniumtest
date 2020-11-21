@@ -16,7 +16,7 @@ public class SignUpPage {
     private By emailField = By.xpath("//input[@id=\"user_email\"]");
     private By passwordField = By.xpath("//input[@id=\"user_password\"]");
 
-    private By userNameError = By.xpath("//input[@id=\"user_login\"]/parent::div/parent::dd/following-sibling::dd");
+    private By userNameError = By.xpath("//input[@id=\"user_login\"]/parent::dd/following-sibling::dd/div");
     private By emailError = By.xpath("//input[@id=\"user_email\"]/parent::dd/following-sibling::dd");
     private By passwordError = By.xpath("//input[@id=\"user_password\"]/parent::dd/following-sibling::dd");
     private By mainError = By.xpath("//*[@id=\"signup-form\"]/div");
