@@ -26,7 +26,7 @@ public class MainPageTest {
     public void signInTest() {
         LoginPage loginPage = mainPage.clickSignInButton();
         String heading = loginPage.getHeadingText();
-        Assert.assertEquals("Заголовок не собержит ожидаемый заголовок!", "Sign in to GitHub", heading);
+        Assert.assertEquals("Заголовок не содержит ожидаемый заголовок!", "Sign in to GitHub", heading);
     }
 
     @Test
