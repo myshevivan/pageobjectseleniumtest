@@ -18,29 +18,32 @@ public class LoginPageTest {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-        driver.get("https://github.com/login");
+        driver.get("http://the-internet.herokuapp.com/login");
         loginPage = new LoginPage(driver);
     }
 
+    //Задание 1
     @Test
-    public void loginWithEmptyCredsTest() {
-        LoginPage newLoginPage = loginPage.loginWithInvalidCreds("", "");
-        String error = newLoginPage.getErrorText();
-        Assert.assertEquals("Ошибка не соответствует ожиданиям!", "Incorrect username or password.", error);
+    public void loginWithCorrectUsernameAndPassword() {
+        LoginPage newLoginPage = loginPage.loginWithInvalidCreds("tomsmith", "SuperSecretPassword!");
+        String heading = newLoginPage.getHeadingText();
+        Assert.assertTrue("Заголовок не соответствует ожиданиям! ФР: " + heading , heading.contains("You logged into a secure area!"));
     }
 
+    //Задание 2
     @Test
-    public void loginWithIncorrectCredsTest() {
-        LoginPage newLoginPage = loginPage.loginWithInvalidCreds("test", "test");
-        String error = newLoginPage.getErrorText();
-        Assert.assertEquals("Ошибка не соответствует ожиданиям!", "Incorrect username or password.", error);
+    public void loginWithWrongUsername() {
+        LoginPage newLoginPage = loginPage.loginWithInvalidCreds("err", "SuperSecretPassword!");
+        String heading = newLoginPage.getHeadingText();
+        Assert.assertTrue("Заголовок не соответствует ожиданиям! ФР: " + heading , heading.contains("Your username is invalid!"));
     }
 
+    //Задание 3
     @Test
-    public void createAccTest() {
-        SignUpPage signUpPage = loginPage.createAcc();
-        String heading = signUpPage.getHeadingText();
-        Assert.assertEquals("Заголовок не соответствует ожиданиям!", "Create your account", heading);
+    public void loginWithWrongPassword() {
+        LoginPage newLoginPage = loginPage.loginWithInvalidCreds("tomsmith", "err!");
+        String heading = newLoginPage.getHeadingText();
+        Assert.assertTrue("Заголовок не соответствует ожиданиям! ФР: " + heading , heading.contains("Your password is invalid!"));
     }
 
     @After

@@ -8,11 +8,11 @@ public class LoginPage {
         this.driver = driver;
     }
 
-    private By loginField = By.xpath("//input[@id=\"login_field\"]");
+    private By loginField = By.xpath("//input[@id=\"username\"]");
     private By passwordField = By.xpath("//input[@id=\"password\"]");
-    private By signInButton = By.xpath("//input[@name=\"commit\"]");
+    private By signInButton = By.xpath("//button/i[text()=\" Login\"]");
 
-    private By heading = By.xpath("//div[contains(@class, \"auth-form-header\")]/h1");
+    private By heading = By.xpath("//div[@id=\"flash\"]");
 
     private By error = By.xpath("//div[@id=\"js-flash-container\"]//div[@class=\"container-lg px-2\"]");
 
